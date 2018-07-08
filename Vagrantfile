@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = 'vortex-dev'
   config.vm.define vm_name = 'vortex'
 
-  config.vm.provision "file", source: "configs/.vimrc", destination: "$HOME/.vimrc"
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     set -e -x -u
     sudo apt-get update
@@ -48,17 +47,10 @@ Vagrant.configure("2") do |config|
 
     kubectl taint nodes --all node-role.kubernetes.io/master-
 
-    # install vim environment
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    vim +PluginInstall +qall
-
-    # init YouCompleteMe vim plugin
-    sudo apt-get install -y python-dev python3-dev
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.py --go-completer
-
-    cd ~/
     git clone https://github.com/hwchiu/kubeDemo
+    # Pull the image
+    sudo docker pull nginx
+    sudo docker pull busybox
   SHELL
 
   config.vm.network :private_network, ip: "172.17.8.100"
