@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
     git clone https://github.com/hwchiu/kubeDemo
     # Pull the image
     sudo docker pull nginx
-    sudo docker pull busybox
+    sudo docker pull ubuntu
   SHELL
 
   config.vm.network :private_network, ip: "172.17.8.101"
