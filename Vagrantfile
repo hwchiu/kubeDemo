@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
     sudo swapoff -a && sudo sysctl -w vm.swappiness=0
     sudo sed '/swap.img/d' -i /etc/fstab
 
-    sudo kubeadm init --kubernetes-version v${KUBE_VERSION} --apiserver-advertise-address=172.17.8.100 --pod-network-cidr=10.244.0.0/16
+    sudo kubeadm init --kubernetes-version v${KUBE_VERSION} --apiserver-advertise-address=172.17.8.101 --pod-network-cidr=10.244.0.0/16
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     sudo docker pull busybox
   SHELL
 
-  config.vm.network :private_network, ip: "172.17.8.100"
+  config.vm.network :private_network, ip: "172.17.8.101"
   config.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--cpus", 2]
       v.customize ["modifyvm", :id, "--memory", 4096]
