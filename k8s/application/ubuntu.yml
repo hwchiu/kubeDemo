@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   containers:
-  - image: ubuntu
+  - image: hwchiu/netutils
     command:
       - sleep
       - "360000"
