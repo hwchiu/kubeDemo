@@ -10,4 +10,4 @@ spec:
     protocol: TCP
   selector:
     run: k8s-nginx
-  type: nodePort
+  type: NodePort
