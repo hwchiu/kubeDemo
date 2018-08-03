@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-none
+  namespace: default
+spec:
+  containers:
+  - image: hwchiu/netutils
+    command:
+      - sleep
+      - "360000"
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
+  dnsPolicy: None
+  dnsConfig:
+    nameservers:
+      - 1.2.3.4
+    searches:
+      - ns1.svc.cluster.local
+      - my.dns.search.suffix
+    options:
+      - name: ndots
+        value: "2"
+      - name: edns0

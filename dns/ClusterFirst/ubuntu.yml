@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-clusterfirst
+  namespace: default
+spec:
+  containers:
+  - image: hwchiu/netutils
+    command:
+      - sleep
+      - "360000"
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+  restartPolicy: Always
+  dnsPolicy: ClusterFirst
