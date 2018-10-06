@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: hwchiu-demo
+spec:
+  secretName: hwchiu-demo-tls
+  issuerRef:
+    name: letsencrypt-demo
+    kind: ClusterIssuer
+  commonName: test.hwchiu.com
+  dnsNames:
+  - test.hwchiu.com
+  acme:
+    config:
+    - dns01:
+        provider: cf-dns
+      domains:
+      - test.hwchiu.com
