@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
 
     kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
 
-    kubectl taint nodes --all node.kubernetes.io/not-ready-
+    kubectl taint nodes --all node-role.kubernetes.io/master
 
     git clone https://github.com/hwchiu/kubeDemo
     # Pull the image
