@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-nginx
+  name: redis
 spec:
   selector:
     matchLabels:
-      run: k8s-nginx
+      run: redis
   replicas: 3
   template:
     metadata:
       labels:
-        run: k8s-nginx
+        run: redis
     spec:
       containers:
-      - name: k8s-nginx
+      - name: redis
         imagePullPolicy: IfNotPresent
-        image: nginx
+        image: redis:5.0
         ports:
-        - containerPort: 80
+        - containerPort: 6379
 
