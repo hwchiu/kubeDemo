@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    image: hwchiu/netutils:latest
+    networks:
+      - redis-net
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:5.0
+    hostname: redis
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
